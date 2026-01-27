@@ -1,0 +1,73 @@
+<odoo>
+  <data>
+      <record id="view_employee_form_external_id" model="ir.ui.view">
+        <field name="name">hr.employee.form.external.id</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='coach_id']" position="after">
+                <field name="custom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+      <record id="view_crm_lead_form_external_id" model="ir.ui.view">
+        <field name="name">crm.lead.form.external.id</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="custom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+      <record id="view_project_project_form_external_id" model="ir.ui.view">
+        <field name="name">project.project.form.external.id</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="custom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+      <record id="view_project_task_form_external_id" model="ir.ui.view">
+        <field name="name">project.task.form.external.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="custom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+      <record id="view_project_task_form_external_id" model="ir.ui.view">
+        <field name="name">project.task.form.external.id</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="custom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+      <record id="view_res_partner_form_external_id" model="ir.ui.view">
+        <field name="name">res.partner.form.external.id</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="custom_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+  </data>
+</odoo>
