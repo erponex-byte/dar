@@ -6,3 +6,5 @@ class ResConfigSettings(models.TransientModel):
 
     module_om_hr_payroll_account = fields.Boolean(string='Payroll Accounting')
 
+    trash = fields.Boolean(string='Trash')
+
