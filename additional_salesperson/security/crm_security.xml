@@ -1,0 +1,30 @@
+<odoo>
+
+    <!-- Read access for all internal users -->
+    <record id="crm_lead_read_all_internal" model="ir.rule">
+        <field name="name">CRM Opportunities - Read All</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+
+    <!-- Write only if assigned -->
+    <record id="crm_lead_write_if_assigned" model="ir.rule">
+        <field name="name">CRM Opportunities - Write If Assigned</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="domain_force">
+            ['|', ('user_id','=',user.id), ('add_user_ids','in',user.id)]
+        </field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

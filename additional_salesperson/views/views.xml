@@ -1,0 +1,66 @@
+<odoo>
+  <data>
+
+
+
+
+
+
+      <record id="additional_salesperson_crm_lead_form" model="ir.ui.view">
+            <field name="name">additional.salesperson.crm.lead.form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//field[@name='user_id']" position="after">
+                            <field name="add_user_ids" string="Additional Salesperson"  widget="many2many_tags"  >
+                            </field>
+                    </xpath>
+
+            </field>
+        </record>
+
+
+
+       <record model="ir.ui.view" id="crm_opportunity_multi_users_filter">
+            <field name="name">crm.opportunity.partner.filter.assigned</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+            <field name="arch" type="xml">
+                <filter name="assigned_to_me" position="after">
+                    <filter string="Our Pipeline" name="our_pipeline" domain="['|',('user_id', '=', uid),('add_user_ids','in',uid)]" />
+                </filter>
+            </field>
+        </record>
+
+      <record id="project_form_inherit_multi_manager" model="ir.ui.view">
+        <field name="name">project.project.form.multi.manager</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+
+            <!-- Add after main Project Manager -->
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="multi_manager_ids" widget="many2many_tags"/>
+            </xpath>
+
+        </field>
+    </record>
+
+      <record id="view_project_project_filter_inherit" model="ir.ui.view">
+        <field name="name">project.project.filter.multi.manager</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+
+            <!-- Add after main Project Manager -->
+            <filter name="own_projects" position="after">
+                    <filter string="Our Projects" name="our_projects" domain="['|',('user_id', '=', uid),('multi_manager_ids','in',uid)]" />
+                </filter>
+
+        </field>
+    </record>
+
+
+
+  </data>
+</odoo>
